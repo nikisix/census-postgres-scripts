@@ -129,107 +129,110 @@ aria2c --dir=sf1 --max-connection-per-server=5 --parameterized-uri=true --force-
 
 #SUMMARY FILE 3
 aria2c --dir=sf3 --max-connection-per-server=5 --parameterized-uri=true --force-sequential=true \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Alabama/al000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Alabama/al000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Alabama/algeo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Alaska/ak000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Alaska/ak000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Alaska/akgeo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Arizona/az000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Arizona/az000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Arizona/azgeo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Arkansas/ar000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Arkansas/ar000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Arkansas/argeo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/California/ca000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/California/ca000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/California/cageo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Colorado/co000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Colorado/co000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Colorado/cogeo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Connecticut/ct000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Connecticut/ct000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Connecticut/ctgeo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Delaware/de000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Delaware/de000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Delaware/degeo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/District_of_Columbia/dc000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/District_of_Columbia/dc000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/District_of_Columbia/dcgeo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Florida/fl000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Florida/fl000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Florida/flgeo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Georgia/ga000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Georgia/ga000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Georgia/gageo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Hawaii/hi000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Hawaii/hi000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Hawaii/higeo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Idaho/id000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Idaho/id000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Idaho/idgeo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Illinois/il000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Illinois/il000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Illinois/ilgeo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Indiana/in000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Indiana/in000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Indiana/ingeo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Iowa/ia000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Iowa/ia000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Iowa/iageo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Kansas/ks000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Kansas/ks000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Kansas/ksgeo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Kentucky/ky000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Kentucky/ky000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Kentucky/kygeo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Louisiana/la000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Louisiana/la000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Louisiana/lageo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Maine/me000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Maine/me000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Maine/megeo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Maryland/md000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Maryland/md000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Maryland/mdgeo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Massachusetts/ma000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Massachusetts/ma000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Massachusetts/mageo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Michigan/mi000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Michigan/mi000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Michigan/migeo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Minnesota/mn000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Minnesota/mn000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Minnesota/mngeo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Mississippi/ms000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Mississippi/ms000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Mississippi/msgeo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Missouri/mo000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Missouri/mo000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Missouri/mogeo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Montana/mt000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Montana/mt000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Montana/mtgeo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Nebraska/ne000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Nebraska/ne000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Nebraska/negeo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Nevada/nv000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Nevada/nv000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Nevada/nvgeo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/New_Hampshire/nh000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/New_Hampshire/nh000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/New_Hampshire/nhgeo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/New_Jersey/nj000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/New_Jersey/nj000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/New_Jersey/njgeo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/New_Mexico/nm000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/New_Mexico/nm000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/New_Mexico/nmgeo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/New_York/ny000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/New_York/ny000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/New_York/nygeo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/North_Carolina/nc000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/North_Carolina/nc000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/North_Carolina/ncgeo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/North_Dakota/nd000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/North_Dakota/nd000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/North_Dakota/ndgeo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Ohio/oh000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Ohio/oh000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Ohio/ohgeo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Oklahoma/ok000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Oklahoma/ok000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Oklahoma/okgeo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Oregon/or000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Oregon/or000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Oregon/orgeo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Pennsylvania/pa000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Pennsylvania/pa000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Pennsylvania/pageo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Puerto_Rico/pr000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Puerto_Rico/pr000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Puerto_Rico/prgeo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Rhode_Island/ri000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Rhode_Island/ri000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Rhode_Island/rigeo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/South_Carolina/sc000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/South_Carolina/sc000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/South_Carolina/scgeo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/South_Dakota/sd000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/South_Dakota/sd000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/South_Dakota/sdgeo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Tennessee/tn000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Tennessee/tn000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Tennessee/tngeo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Texas/tx000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Texas/tx000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Texas/txgeo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Utah/ut000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Utah/ut000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Utah/utgeo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Vermont/vt000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Vermont/vt000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Vermont/vtgeo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Virginia/va000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Virginia/va000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Virginia/vageo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Washington/wa000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Washington/wa000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Washington/wageo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/West_Virginia/wv000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/West_Virginia/wv000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/West_Virginia/wvgeo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Wisconsin/wi000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Wisconsin/wi000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Wisconsin/wigeo_uf3.zip" \
-    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Wyoming/wy000[01-39]_uf3.zip" \
+    "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Wyoming/wy000[01-76]_uf3.zip" \
     "http://www2.census.gov/ftp/census_2000/datasets/Summary_File_3/Wyoming/wygeo_uf3.zip" \
+
+
+#TODO add in download commands for sf2 and sf4
