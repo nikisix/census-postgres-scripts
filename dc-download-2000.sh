@@ -4,8 +4,6 @@
 #tmux
 #sudo apt-get install aria2
 #cd ~/download/2000
-cd /zdrive
-mkdir sf1 sf2 sf3 sf4
 #cd sf1
 #curl ftp://ftp.census.gov/census_2000/datasets/Summary_File_1/0Final_National/all_0Final_National.zip > ./sf1/all_0Final_National.zip
 #unzip ./sf1/all_0Final_National.zip
@@ -19,6 +17,9 @@ mkdir sf1 sf2 sf3 sf4
 #unzip ./sf3/all_0Final_National.zip
 #cd ../sf4
 #curl ftp://ftp.census.gov/census_2000/datasets/Summary_File_4/0Final_National/all_0Final_National.zip -o all_0Final_National.zip
+
+cd /zdrive
+mkdir sf1 sf2 sf3 sf4
 
 #SUMMARY FILE 1
 aria2c --dir=sf1 --max-connection-per-server=5 --parameterized-uri=true --force-sequential=true \
