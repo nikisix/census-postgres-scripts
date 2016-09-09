@@ -57,4 +57,60 @@ aria2c --dir=sf1 --max-connection-per-server=5 --parameterized-uri=true --force-
     "http://www2.census.gov/census_2010/04-Summary_File_1/West_Virginia/wv2010.sf1.zip" \
     "http://www2.census.gov/census_2010/04-Summary_File_1/Wisconsin/wi2010.sf1.zip" \
     "http://www2.census.gov/census_2010/04-Summary_File_1/Wyoming/wy2010.sf1.zip" \
-    "http://www2.census.gov/census_2010/04-Summary_File_1/SF1_Access2003.mdb" \
+    "http://www2.census.gov/census_2010/04-Summary_File_1/SF1_Access2003.mdb" 
+
+
+#SUMMARY FILE 2
+aria2c --dir=sf2 --max-connection-per-server=5 --parameterized-uri=true --force-sequential=true \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/Alabama/al2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/Alaska/ak2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/Arizona/az2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/Arkansas/ar2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/California/ca2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/Colorado/co2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/Connecticut/ct2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/Delaware/de2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/District_of_Columbia/dc2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/Florida/fl2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/Georgia/ga2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/Hawaii/hi2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/Idaho/id2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/Illinois/il2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/Indiana/in2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/Iowa/ia2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/Kansas/ks2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/Kentucky/ky2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/Louisiana/la2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/Maine/me2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/Maryland/md2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/Massachusetts/ma2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/Michigan/mi2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/Minnesota/mn2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/Mississippi/ms2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/Missouri/mo2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/Montana/mt2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/National/us2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/Nebraska/ne2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/Nevada/nv2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/New_Hampshire/nh2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/New_Jersey/nj2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/New_Mexico/nm2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/New_York/ny2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/North_Carolina/nc2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/North_Dakota/nd2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/Ohio/oh2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/Oklahoma/ok2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/Oregon/or2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/Pennsylvania/pa2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/Rhode_Island/ri2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/South_Carolina/sc2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/South_Dakota/sd2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/Tennessee/tn2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/Texas/tx2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/Utah/ut2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/Vermont/vt2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/Virginia/va2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/Washington/wa2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/West_Virginia/wv2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/Wisconsin/wi2010.sf2.zip" \
+    "http://www2.census.gov/census_2010/05-Summary_File_2/Wyoming/wy2010.sf2.zip" 
