@@ -18,7 +18,7 @@
 #cd ../sf4
 #curl ftp://ftp.census.gov/census_2000/datasets/Summary_File_4/0Final_National/all_0Final_National.zip -o all_0Final_National.zip
 
-cd /zdrive
+cd /zdrive/dc2000
 mkdir sf1 sf2 sf3 sf4
 
 #SUMMARY FILE 1
