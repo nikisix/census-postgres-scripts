@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #not using wget recursively b/c the census' robots.txt forbids it
 #download and unzip the summary file tables for the 1990 decenneal census
 #no use in parallizing this download b/c the census' ftp site limits each ip to one ftp connection at a time
@@ -5,9 +7,29 @@
 #sudo apt-get install aria2
 
 cd /zdrive/dc1990
-mkdir sf1a sf1b sf2a sf2b sf2c sf3a sf3b sf3c
+mkdir -p sf1a sf1b sf2a sf2b sf2c sf3a sf3b sf3c
+
+#CD90_1A_1
+#CD90_1A_2_1
+#CD90_1A_2_2
+#CD90_1A_3_1
+#CD90_1A_3_2
+#CD90_1A_3_3
+#CD90_1A_4_1
+#CD90_1A_4_2
+#CD90_1A_5_1
+#CD90_1A_5_2
+#CD90_1A_5_3
+#CD90_1A_6
+#CD90_1A_7_1
+#CD90_1A_7_2
+#CD90_1A_8
+#CD90_1A_9_1
+#CD90_1A_9_2
+#CD90_1A_PR
 
 #SUMMARY FILE 1A
+#all data and info can be found here: http://www2.census.gov/census_1990/1990STF1.html
 #aria2c --dir=sf1a --max-connection-per-server=5 --parameterized-uri=true --force-sequential=true \
     #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-AK.ZIP" \
     #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-AL.ZIP" \
@@ -175,127 +197,154 @@ mkdir sf1a sf1b sf2a sf2b sf2c sf3a sf3b sf3c
     #"http://www2.census.gov/census_1990/STF1B_ASCII/STF1B-WYh.zip"
 
 ##SUMMARY FILE 2A
-aria2c --dir=sf2a --max-connection-per-server=5 --parameterized-uri=true --force-sequential=true \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-AK.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-AL.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-AR.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-AZ.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-CA.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-CO.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-CT.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-DC.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-DE.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-FL.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-GA.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-HI.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-IA.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-ID.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-IL.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-IN.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-KS.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-KY.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-LA.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-MA.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-MD.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-ME.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-MI.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-MN.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-MO.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-MS.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-MT.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-NC.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-ND.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-NE.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-NH.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-NJ.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-NM.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-NV.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-NY.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-OH.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-OK.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-OR.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-PA.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-PR.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-RI.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-SC.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-SD.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-TN.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-TX.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-UT.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-VA.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-VI.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-VT.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-WA.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-WI.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-WV.zip" \
-    "http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-WY.zip" 
+#aria2c --dir=sf2a --max-connection-per-server=5 --parameterized-uri=true --force-sequential=true \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-AK.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-AL.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-AR.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-AZ.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-CA.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-CO.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-CT.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-DC.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-DE.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-FL.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-GA.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-HI.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-IA.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-ID.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-IL.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-IN.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-KS.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-KY.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-LA.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-MA.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-MD.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-ME.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-MI.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-MN.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-MO.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-MS.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-MT.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-NC.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-ND.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-NE.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-NH.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-NJ.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-NM.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-NV.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-NY.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-OH.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-OK.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-OR.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-PA.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-PR.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-RI.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-SC.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-SD.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-TN.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-TX.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-UT.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-VA.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-VI.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-VT.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-WA.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-WI.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-WV.zip" \
+    #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-WY.zip" 
 
-##SUMMARY FILE 2B
-aria2c --dir=sf2b --max-connection-per-server=5 --parameterized-uri=true --force-sequential=true \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-AK.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-AL.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-AR.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-AZ.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-CA.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-CO.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-CT.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-DC.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-DE.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-FL.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-GA.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-HI.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-IA.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-ID.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-IL.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-IN.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-KS.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-KY.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-LA.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-MA.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-MD.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-ME.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-MI.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-MN.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-MO.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-MS.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-MT.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-NC.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-ND.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-NE.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-NH.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-NJ.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-NM.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-NV.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-NY.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-OH.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-OK.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-OR.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-PA.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-PR.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-RI.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-SC.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-SD.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-TN.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-TX.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-UT.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-VA.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-VT.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-WA.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-WI.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-WV.zip" \
-    "http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-WY.zip" 
+###SUMMARY FILE 2B
+#aria2c --dir=sf2b --max-connection-per-server=5 --parameterized-uri=true --force-sequential=true \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-AK.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-AL.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-AR.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-AZ.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-CA.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-CO.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-CT.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-DC.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-DE.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-FL.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-GA.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-HI.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-IA.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-ID.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-IL.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-IN.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-KS.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-KY.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-LA.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-MA.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-MD.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-ME.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-MI.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-MN.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-MO.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-MS.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-MT.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-NC.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-ND.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-NE.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-NH.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-NJ.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-NM.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-NV.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-NY.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-OH.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-OK.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-OR.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-PA.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-PR.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-RI.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-SC.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-SD.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-TN.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-TX.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-UT.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-VA.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-VT.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-WA.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-WI.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-WV.zip" \
+    #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-WY.zip" 
 
-##SUMMARY FILE 2C
-aria2c --dir=sf2c --max-connection-per-server=5 --parameterized-uri=true --force-sequential=true \
-    "http://www2.census.gov/census_1990/STF2C_ASCII/STF2CxUS.ZIP"
+#SUMMARY FILE 2C
+#aria2c --dir=sf2c --max-connection-per-server=5 --parameterized-uri=true --force-sequential=true \
+    #"http://www2.census.gov/census_1990/STF2C_ASCII/STF2CxUS.ZIP"
 
-##SUMMARY FILE 3A
-aria2c --dir=sf3a --max-connection-per-server=5 --parameterized-uri=true --force-sequential=true \
-http://www2.census.gov/census_1990/
-http://www2.census.gov/census_1990/CD90_3A_01/all.zip
-aria2c --dir=sf3b --max-connection-per-server=5 --parameterized-uri=true --force-sequential=true \
-http://www2.census.gov/census_1990/
-http://www2.census.gov/census_1990/CD90_3A_01/all.zip
-aria2c --dir=sf3c --max-connection-per-server=5 --parameterized-uri=true --force-sequential=true \
-http://www2.census.gov/census_1990/
-http://www2.census.gov/census_1990/CD90_3A_01/all.zip
+#SUMMARY FILE 3A
+#aria2c --dir=sf3a --max-connection-per-server=5 --parameterized-uri=true --force-sequential=true \
+    #"http://www2.census.gov/census_1990/CD90_3A_[01-61]/*.dbf"
+
+#missing some numbers so cant use a simple sequence
+#state_numbers=("01" "02" "04" "05" "06" "08" "09" "10" "11" "12" "13" "15" "16" "17" "18" "19" "20" "21" "22" "23" "24" "25" "26" "27" "28" "29" "30" "31" "32" "33" "34" "35" "36" "37" "38" "39" "40" "41" "42" "44" "45" "46" "47" "48" "49" "50" "51" "53" "54" "55" "56")
+#state_abbreviations=("al" "ak" "az" "ar" "ca" "co" "ct" "de" "dc" "fl" "ga" "hi" "id" "il" "in" "ia" "ks" "ky" "la" "me" "md" "ma" "mi" "mn" "ms" "mo" "mt" "ne" "nv" "nh" "nj" "nm" "ny" "nc" "nd" "oh" "ok" "or" "pa" "ri" "sc" "sd" "tn" "tx" "ut" "vt" "va" "wa" "wv" "wi" "wy")
+#echo ${#state_abbreviations[@]} #array-len
+#for i in $(seq 01 ${#state_abbreviations[@]}); do
+    #echo ${state_abbreviations[$i]}
+    #echo ${state_numbers[$i]}
+    #echo "http://www2.census.gov/census_1990/CD90_3A_${state_numbers[$i]}/stf3[00-34]${state_abbreviations[$i]}.dbf";
+    #aria2c --dir=sf3a --max-connection-per-server=5 --parameterized-uri=true --force-sequential=true \
+        #"http://www2.census.gov/census_1990/CD90_3A_${state_numbers[$i]}/stf3[00-34]${state_abbreviations[$i]}.dbf";
+#done;
+for i in {01..21};do
+    wget --directory-prefix=sf3a --accept dbf --mirror --adjust-extension --convert-links\
+     --backup-converted --no-parent -e robots=off --level=1 --random-wait\
+     "http://www2.census.gov/census_1990/CD90_3A_$i/"
+done&
+for j in {22..41};do
+    wget --directory-prefix=sf3a --accept dbf --mirror --adjust-extension --convert-links\
+     --backup-converted --no-parent -e robots=off --level=1 --random-wait\
+     "http://www2.census.gov/census_1990/CD90_3A_$j/"
+done&
+for k in {42..61};do
+    wget --directory-prefix=sf3a --accept dbf --mirror --adjust-extension --convert-links\
+     --backup-converted --no-parent -e robots=off --level=1 --random-wait\
+     "http://www2.census.gov/census_1990/CD90_3A_$k/"
+done&
+#http://www2.census.gov/census_1990/CD90_3A_01/all.zip
+#aria2c --dir=sf3b --max-connection-per-server=5 --parameterized-uri=true --force-sequential=true \
+#http://www2.census.gov/census_1990/
+#http://www2.census.gov/census_1990/CD90_3A_01/all.zip
+#aria2c --dir=sf3c --max-connection-per-server=5 --parameterized-uri=true --force-sequential=true \
+#http://www2.census.gov/census_1990/
+#http://www2.census.gov/census_1990/CD90_3A_01/all.zip
