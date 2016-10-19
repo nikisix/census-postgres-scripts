@@ -1,4 +1,7 @@
 #!/bin/bash
+set -o errexit
+set -o nounset # fail on unset variables
+set -o pipefail
 
 #not using wget recursively b/c the census' robots.txt forbids it
 #download and unzip the summary file tables for the 1990 decenneal census
@@ -7,29 +10,72 @@
 #sudo apt-get install aria2
 
 cd /zdrive/dc1990
-mkdir -p sf1a sf1b sf2a sf2b sf2c sf3a sf3b sf3c
+mkdir -p sf1a sf1b sf2a sf2b sf2c sf3a sf3b sf3c fix
 
-#CD90_1A_1
-#CD90_1A_2_1
-#CD90_1A_2_2
-#CD90_1A_3_1
-#CD90_1A_3_2
-#CD90_1A_3_3
-#CD90_1A_4_1
-#CD90_1A_4_2
-#CD90_1A_5_1
-#CD90_1A_5_2
-#CD90_1A_5_3
-#CD90_1A_6
-#CD90_1A_7_1
-#CD90_1A_7_2
-#CD90_1A_8
-#CD90_1A_9_1
-#CD90_1A_9_2
-#CD90_1A_PR
 
 #SUMMARY FILE 1A
 #all data and info can be found here: http://www2.census.gov/census_1990/1990STF1.html
+#sf1_1a_links=(
+    #"http://www2.census.gov/census_1990/CD90_1A_1"
+    #"http://www2.census.gov/census_1990/CD90_1A_2_1"
+    #"http://www2.census.gov/census_1990/CD90_1A_2_2"
+    #"http://www2.census.gov/census_1990/CD90_1A_3_1"
+    #"http://www2.census.gov/census_1990/CD90_1A_3_2"
+    #"http://www2.census.gov/census_1990/CD90_1A_3_3"
+    #"http://www2.census.gov/census_1990/CD90_1A_4_1"
+    #"http://www2.census.gov/census_1990/CD90_1A_4_2"
+    #"http://www2.census.gov/census_1990/CD90_1A_5_1"
+    #"http://www2.census.gov/census_1990/CD90_1A_5_2"
+    #"http://www2.census.gov/census_1990/CD90_1A_5_3"
+    #"http://www2.census.gov/census_1990/CD90_1A_6"
+    #"http://www2.census.gov/census_1990/CD90_1A_7_1"
+    #"http://www2.census.gov/census_1990/CD90_1A_7_2"
+    #"http://www2.census.gov/census_1990/CD90_1A_8"
+    #"http://www2.census.gov/census_1990/CD90_1A_9_1"
+    #"http://www2.census.gov/census_1990/CD90_1A_9_2"
+    #"http://www2.census.gov/census_1990/CD90_1A_PR"
+#)
+
+#for i in "${sf1_1a_links[@]}"; do
+    #echo "Downloading: " $i
+    #wget --directory-prefix=sf1a --accept dbf --mirror --adjust-extension --convert-links\
+         #--backup-converted --no-parent -e robots=off --level=1 --random-wait\
+         #$i
+#done
+#Note: one repeated file:
+    #./CD90_1A_4_2/cnamesla.dbf
+    #./CD90_1A_7_1/cnamesla.dbf
+
+
+#TODO download fixes and overwrite original erred files
+#wget --directory-prefix=fix --accept zip -r -k -m -np -e robots=off http://www.census.gov/support/revised.html
+
+#change to where the files landed
+cd /zdrive/dc1990/sf1a-test/www2.census.gov/census_1990
+#mv */* ../.. #copy all files back up to sf1a parent folder
+cd ../..
+#rm -r ./www2.census.gov/ #not sure why this doesnt work
+#create loading schema
+psql -hlocalhost -Upostgres -dpropdata -c 'create schema dc1990load;'
+#copy the files to the database landing schema
+
+  
+#create landing tables 0-9
+for i in $(seq 0 9); do
+    echo Creating "stf1a${i}al" | sed -e "s/stf1a${i}al/dc1990load.stf1a${i}/g"
+    pgdbf -T "stf1a${i}al.dbf" | sed -n '1,2'p | sed -e "s/stf1a${i}al/dc1990load.stf1a${i}/g" | psql -dpropdata -hlocalhost -Upostgres
+done;
+
+#copy the data into created tables
+for i in {0..9}; do
+    for file in $(ls stf1a${i}*); do
+        #Remove first and last line as they're from the copy command; which pgdbf has no flag to remove these.
+        echo $file
+        pgdbf -TC $file | sed -n -e '$d' -e '2,$'p | psql -hlocalhost -dpropdata -Upostgres -c "COPY dc1990load.stf1a${i} FROM STDIN"
+    done;
+done;
+
+#Old summary file 1a
 #aria2c --dir=sf1a --max-connection-per-server=5 --parameterized-uri=true --force-sequential=true \
     #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-AK.ZIP" \
     #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-AL.ZIP" \
@@ -312,39 +358,18 @@ mkdir -p sf1a sf1b sf2a sf2b sf2c sf3a sf3b sf3c
     #"http://www2.census.gov/census_1990/STF2C_ASCII/STF2CxUS.ZIP"
 
 #SUMMARY FILE 3A
-#aria2c --dir=sf3a --max-connection-per-server=5 --parameterized-uri=true --force-sequential=true \
-    #"http://www2.census.gov/census_1990/CD90_3A_[01-61]/*.dbf"
-
-#missing some numbers so cant use a simple sequence
-#state_numbers=("01" "02" "04" "05" "06" "08" "09" "10" "11" "12" "13" "15" "16" "17" "18" "19" "20" "21" "22" "23" "24" "25" "26" "27" "28" "29" "30" "31" "32" "33" "34" "35" "36" "37" "38" "39" "40" "41" "42" "44" "45" "46" "47" "48" "49" "50" "51" "53" "54" "55" "56")
-#state_abbreviations=("al" "ak" "az" "ar" "ca" "co" "ct" "de" "dc" "fl" "ga" "hi" "id" "il" "in" "ia" "ks" "ky" "la" "me" "md" "ma" "mi" "mn" "ms" "mo" "mt" "ne" "nv" "nh" "nj" "nm" "ny" "nc" "nd" "oh" "ok" "or" "pa" "ri" "sc" "sd" "tn" "tx" "ut" "vt" "va" "wa" "wv" "wi" "wy")
-#echo ${#state_abbreviations[@]} #array-len
-#for i in $(seq 01 ${#state_abbreviations[@]}); do
-    #echo ${state_abbreviations[$i]}
-    #echo ${state_numbers[$i]}
-    #echo "http://www2.census.gov/census_1990/CD90_3A_${state_numbers[$i]}/stf3[00-34]${state_abbreviations[$i]}.dbf";
-    #aria2c --dir=sf3a --max-connection-per-server=5 --parameterized-uri=true --force-sequential=true \
-        #"http://www2.census.gov/census_1990/CD90_3A_${state_numbers[$i]}/stf3[00-34]${state_abbreviations[$i]}.dbf";
-#done;
-for i in {01..21};do
-    wget --directory-prefix=sf3a --accept dbf --mirror --adjust-extension --convert-links\
-     --backup-converted --no-parent -e robots=off --level=1 --random-wait\
-     "http://www2.census.gov/census_1990/CD90_3A_$i/"
-done&
-for j in {22..41};do
-    wget --directory-prefix=sf3a --accept dbf --mirror --adjust-extension --convert-links\
-     --backup-converted --no-parent -e robots=off --level=1 --random-wait\
-     "http://www2.census.gov/census_1990/CD90_3A_$j/"
-done&
-for k in {42..61};do
-    wget --directory-prefix=sf3a --accept dbf --mirror --adjust-extension --convert-links\
-     --backup-converted --no-parent -e robots=off --level=1 --random-wait\
-     "http://www2.census.gov/census_1990/CD90_3A_$k/"
-done&
-#http://www2.census.gov/census_1990/CD90_3A_01/all.zip
-#aria2c --dir=sf3b --max-connection-per-server=5 --parameterized-uri=true --force-sequential=true \
-#http://www2.census.gov/census_1990/
-#http://www2.census.gov/census_1990/CD90_3A_01/all.zip
-#aria2c --dir=sf3c --max-connection-per-server=5 --parameterized-uri=true --force-sequential=true \
-#http://www2.census.gov/census_1990/
-#http://www2.census.gov/census_1990/CD90_3A_01/all.zip
+#for i in {01..21};do
+    #wget --directory-prefix=sf3a --accept dbf --mirror --adjust-extension --convert-links\
+     #--backup-converted --no-parent -e robots=off --level=1 --random-wait\
+     #"http://www2.census.gov/census_1990/CD90_3A_$i/"
+#done&
+#for j in {22..41};do
+    #wget --directory-prefix=sf3a --accept dbf --mirror --adjust-extension --convert-links\
+     #--backup-converted --no-parent -e robots=off --level=1 --random-wait\
+     #"http://www2.census.gov/census_1990/CD90_3A_$j/"
+#done&
+#for k in {42..61};do
+    #wget --directory-prefix=sf3a --accept dbf --mirror --adjust-extension --convert-links\
+     #--backup-converted --no-parent -e robots=off --level=1 --random-wait\
+     #"http://www2.census.gov/census_1990/CD90_3A_$k/"
+#done&
