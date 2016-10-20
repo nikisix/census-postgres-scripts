@@ -1,5 +1,8 @@
 #!/bin/bash
-set -o errexit
+
+# this craps out on stf1a8tx.dbf upload that is actually a success but sends a can't reach end of record warning
+#set -o errexit 
+
 set -o nounset # fail on unset variables
 set -o pipefail
 
@@ -51,89 +54,66 @@ mkdir -p sf1a sf1b sf2a sf2b sf2c sf3a sf3b sf3c fix
 #wget --directory-prefix=fix --accept zip -r -k -m -np -e robots=off http://www.census.gov/support/revised.html
 
 #change to where the files landed
-cd /zdrive/dc1990/sf1a-test/www2.census.gov/census_1990
-#mv */* ../.. #copy all files back up to sf1a parent folder
-cd ../..
-#rm -r ./www2.census.gov/ #not sure why this doesnt work
-#create loading schema
-psql -hlocalhost -Upostgres -dpropdata -c 'create schema dc1990load;'
-#copy the files to the database landing schema
+#cd /zdrive/dc1990/sf1a-test/www2.census.gov/census_1990
+##mv */* /zdrive/dc1990/sf1a #copy all files back up to sf1a parent folder
+#cd /zdrive/dc1990/sf1a-test
+##rm -r ./www2.census.gov/ #not sure why this doesnt work
 
-  
+#create loading schema
+#psql -hlocalhost -Upostgres -dpropdata -c 'create schema dc1990load;'
+
+##copy the files to the database landing schema
+
+cd /zdrive/dc1990/fix/download
+
+###unzip
+#find . -name "stf*.zip" -exec unzip '{}' \;
+#rm *.TXT #remove the documentation files
+
+##rename everything to lower - necessary to overwrite files that need patched
+#for f in *.DBF; do mv $f ${f,,}; done;
+
+#apply the patch
+#cp /zdrive/dc1990/fix/download/stf1a*.dbf /zdrive/dc1990/sf1a
+#cp /zdrive/dc1990/fix/download/stf1b*.dbf /zdrive/dc1990/sf1b
+#cp /zdrive/dc1990/fix/download/stf1c*.dbf /zdrive/dc1990/sf1c
+#cp /zdrive/dc1990/fix/download/stf2a*.dbf /zdrive/dc1990/sf2a
+#cp /zdrive/dc1990/fix/download/stf2b*.dbf /zdrive/dc1990/sf2b
+#cp /zdrive/dc1990/fix/download/stf2c*.dbf /zdrive/dc1990/sf2c
+#cp /zdrive/dc1990/fix/download/stf3a*.dbf /zdrive/dc1990/sf3a
+#cp /zdrive/dc1990/fix/download/stf3b*.dbf /zdrive/dc1990/sf3b
+#cp /zdrive/dc1990/fix/download/stf3c*.dbf /zdrive/dc1990/sf3c
+
+#upload sf1a
+cd /zdrive/dc1990/sf1a
 #create landing tables 0-9
-for i in $(seq 0 9); do
-    echo Creating "stf1a${i}al" | sed -e "s/stf1a${i}al/dc1990load.stf1a${i}/g"
-    pgdbf -T "stf1a${i}al.dbf" | sed -n '1,2'p | sed -e "s/stf1a${i}al/dc1990load.stf1a${i}/g" | psql -dpropdata -hlocalhost -Upostgres
-done;
+#for i in $(seq 0 9); do
+    #echo Creating "stf1a${i}al" | sed -e "s/stf1a${i}al/dc1990load.stf1a${i}/g"
+    #pgdbf -T "stf1a${i}al.dbf" | sed -n '1,2'p | sed -e "s/stf1a${i}al/dc1990load.stf1a${i}/g" | psql -dpropdata -hlocalhost -Upostgres
+#done;
+
+#learned that fix files have spaces instead of 0s in many fields and replacing spaces with fields must be done
+#fix files that don't work
+#stf1a8mi.dbf #re-replace with original fixes
+#cp /zdrive/dc1990/fix/download/stf1a8mi.dbf /zdrive/dc1990/sf1a/stf1a8mi.dbf
 
 #copy the data into created tables
-for i in {0..9}; do
-    for file in $(ls stf1a${i}*); do
-        #Remove first and last line as they're from the copy command; which pgdbf has no flag to remove these.
-        echo $file
-        pgdbf -TC $file | sed -n -e '$d' -e '2,$'p | psql -hlocalhost -dpropdata -Upostgres -c "COPY dc1990load.stf1a${i} FROM STDIN"
-    done;
-done;
-
-#Old summary file 1a
-#aria2c --dir=sf1a --max-connection-per-server=5 --parameterized-uri=true --force-sequential=true \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-AK.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-AL.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-AR.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-AZ.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-CA.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-CO.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-CT.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-DC.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-DE.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-FL.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-GA.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-GU.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-HI.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-IA.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-ID.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-IL.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-IN.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-KS.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-KY.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-LA.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-MA.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-MD.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-ME.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-MI.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-MN.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-MO.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-MS.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-MT.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-NC.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-ND.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-NE.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-NH.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-NJ.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-NM.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-NV.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-NY.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-OH.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-OK.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-OR.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-PA.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-PR.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-RI.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-SC.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-SD.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-TN.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-TX.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-UT.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-VA.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-VI.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-VT.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-WA.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-WI.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-WV.ZIP" \
-    #"http://www2.census.gov/census_1990/STF1A_ASCII/90STF1A-WY.ZIP"
-
+#for i in {0..9}; do
+	#psql -hlocalhost -dpropdata -Upostgres -c "delete from dc1990load.stf1a${i} ;"
+    #for file in $(ls stf1a${i}*); do
+        ##Remove first and last line as they're from the copy command; which pgdbf has no flag to remove these.
+		##T - remove wrapper transaction. C - remove create table statement.
+		##Replace missing bytes with 0's instead of spaces
+        #echo $file
+        #pgdbf -TC $file |\
+		#sed -n -e '$d' -e '2,$'p |\
+		#sed -e 's/ /0/g' |\
+		#psql -hlocalhost -dpropdata -Upostgres -c "COPY dc1990load.stf1a${i} FROM STDIN"
+    #done;
+#done;
 
 #SUMMARY FILE 1B
+#cd /zdrive/dc1990
 #aria2c --dir=sf1b --max-connection-per-server=5 --parameterized-uri=true --force-sequential=true \
     #"http://www2.census.gov/census_1990/STF1B_ASCII/STF1B-AK.zip" \
     #"http://www2.census.gov/census_1990/STF1B_ASCII/STF1B-AKh.zip" \
@@ -243,6 +223,7 @@ done;
     #"http://www2.census.gov/census_1990/STF1B_ASCII/STF1B-WYh.zip"
 
 ##SUMMARY FILE 2A
+#cd /zdrive/dc1990
 #aria2c --dir=sf2a --max-connection-per-server=5 --parameterized-uri=true --force-sequential=true \
     #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-AK.zip" \
     #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-AL.zip" \
@@ -299,6 +280,7 @@ done;
     #"http://www2.census.gov/census_1990/STF2A_ASCII/STF2A-WY.zip" 
 
 ###SUMMARY FILE 2B
+#cd /zdrive/dc1990
 #aria2c --dir=sf2b --max-connection-per-server=5 --parameterized-uri=true --force-sequential=true \
     #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-AK.zip" \
     #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-AL.zip" \
@@ -354,10 +336,12 @@ done;
     #"http://www2.census.gov/census_1990/STF2B_ASCII/STF2B-WY.zip" 
 
 #SUMMARY FILE 2C
+#cd /zdrive/dc1990
 #aria2c --dir=sf2c --max-connection-per-server=5 --parameterized-uri=true --force-sequential=true \
     #"http://www2.census.gov/census_1990/STF2C_ASCII/STF2CxUS.ZIP"
 
 #SUMMARY FILE 3A
+#cd /zdrive/dc1990
 #for i in {01..21};do
     #wget --directory-prefix=sf3a --accept dbf --mirror --adjust-extension --convert-links\
      #--backup-converted --no-parent -e robots=off --level=1 --random-wait\
